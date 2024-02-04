@@ -1,0 +1,18 @@
+Throughout the process of designing the relational database and ER diagrams, several assumptions have been made:
+
+1. A student can take multiple surveys, but only one survey per course.
+
+2. Each survey has a unique set of questions related to a specific course. These questions can be shared across multiple surveys for different courses.
+
+3. Each survey question has a set of predetermined answer choices with a corresponding numeric value (e.g., Strongly agree, Agree, etc.). The answer choices are the same for all questions and surveys.
+
+4. The survey is not anonymous, and the student's email address is used to uniquely identify a student.
+
+5. The relationships between the entities are as follows:
+   - A one-to-many relationship between Student and Survey entities, where each survey is taken by one student, and each student can take multiple surveys.
+   - A many-to-many relationship between Survey and Question entities, represented by the SurveyQuestion associative entity.
+   - A one-to-many relationship between SurveyQuestion and Answer entities, where each survey question can have multiple answer choices.
+
+6. For simplicity, we have assumed that the course information (course code and title) is already stored in the database.
+
+These assumptions have guided the design and relationships among entities in the ER diagram and relational database schema.

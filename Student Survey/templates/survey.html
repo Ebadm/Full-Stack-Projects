@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Take a Survey | DataScience@BI Course Evaluation</title>
+</head>
+<body>
+  <h1>Take a Survey</h1>
+  {% for category, message in get_flashed_messages(with_categories=True) %}
+    <p class="{{ category }}">{{ message }}</p>
+  {% endfor %}
+  <form method="POST" action="{{ url_for('survey') }}">
+    <label for="email">Email:</label>
+    <input type="email" name="email" required>
+    <br>
+    <label for="course_code">Course:</label>
+    <select name="course_code" required>
+      {% for course in courses %}
+        <option value="{{ course[0] }}">{{ course[0] }} {{ course[1] }}</option>
+      {% endfor %}
+    </select>
+    <br>
+    {% for question in questions %}
+      <p>{{ question[0] }}. {{ question[1] }}</p>
+      {% for i, text in [(5, 'Strongly agree'), (4, 'Agree'), (3, 'Neutral'), (2, 'Disagree'), (1, 'Strongly disagree')] %}
+        <label>
+          <input type="radio" name="question_{{ question[0] }}" value="{{ i }}" required> {{ text }}
+        </label>
+      {% endfor %}
+      <br>
+    {% endfor %}
+    <br>
+    <button type="submit">Submit Survey</button>
+  </form>
+  <a href="{{ url_for('home') }}"><button>Back to Home</button></a>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Survey Results | DataScience@BI Course Evaluation</title>
+</head>
+<body>
+  <h1>Survey Results</h1>
+  <p>Click on a course to view its survey results:</p>
+  <ul>
+    {% for course in courses %}
+      <li><a href="{{ url_for('course_results', course_code=course[0]) }}">{{ course[0] }} {{ course[1] }}</a></li>
+    {% endfor %}
+  </ul>
+  <a href="{{ url_for('home') }}"><button>Back to Home</button></a>
+</body>
+</html>

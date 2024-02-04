@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ course[0] }} Survey Results | DataScience@BI Course Evaluation</title>
+</head>
+<body>
+  <h1>{{ course[0] }} {{ course[1] }} Survey Results</h1>
+  <table>
+    <tr>
+      <th>Question</th>
+      <th>Mean Value</th>
+      <th>Mean Answer</th>
+    </tr>
+    {% for question, mean_value, closest_value in results %}
+    <tr>
+      <td>{{ question[1] }}</td>
+      <td>{{ mean_value }}</td>
+      <td>{{ closest_value }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <h3>Answer Key</h3>
+  <table>
+    <tr>
+      <th>Value</th>
+      <th>Answer Text</th>
+    </tr>
+    {% for value, answer_text in answer_key.items() %}
+    <tr>
+      <td>{{ value }}</td>
+      <td>{{ answer_text }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <a href="{{ url_for('results') }}">Back to course list</a>
+</body>
+</html>
